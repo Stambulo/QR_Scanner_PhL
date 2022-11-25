@@ -1,20 +1,13 @@
 package com.stam.qr
 
 import android.graphics.ImageFormat
-import android.media.Image.Plane
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
-import com.google.zxing.BarcodeFormat
-import com.google.zxing.BinaryBitmap
-import com.google.zxing.DecodeHintType
-import com.google.zxing.MultiFormatReader
-import com.google.zxing.PlanarYUVLuminanceSource
+import com.google.zxing.*
 import com.google.zxing.common.HybridBinarizer
 import java.nio.ByteBuffer
 
-class QrCodeAnalyzer(
-    private val onQrCodeScanned: (String) -> Unit
-): ImageAnalysis.Analyzer {
+class QrCodeAnalyzer(private val onQrCodeScanned: (String) -> Unit): ImageAnalysis.Analyzer {
 
     private val supportedImageFormats = listOf(
         ImageFormat.YUV_420_888,
